@@ -1,4 +1,4 @@
-package com.insurance.entity;
+package dortal.insurance.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

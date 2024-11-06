@@ -1,4 +1,4 @@
-package com.insurance.security;
+package dortal.insurance.security;
 
 public class JwtResponse {
     private String token;

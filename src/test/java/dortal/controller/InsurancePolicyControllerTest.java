@@ -1,15 +1,15 @@
-package com.controller;
+package dortal.controller;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.insurance.repository.UserRepository;
-import com.insurance.security.JwtTokenProvider;
-import com.insurance.entity.InsurancePolicy;
-import com.insurance.entity.User;
-import com.insurance.repository.InsurancePolicyRepository;
-import com.insurance.service.UserService;
+import dortal.insurance.repository.UserRepository;
+import dortal.insurance.security.JwtTokenProvider;
+import dortal.insurance.entity.InsurancePolicy;
+import dortal.insurance.entity.User;
+import dortal.insurance.repository.InsurancePolicyRepository;
+import dortal.insurance.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;

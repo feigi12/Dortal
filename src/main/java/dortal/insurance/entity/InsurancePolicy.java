@@ -1,4 +1,4 @@
-package com.insurance.entity;
+package dortal.insurance.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

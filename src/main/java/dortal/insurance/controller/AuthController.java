@@ -1,10 +1,10 @@
-package com.insurance.controller;
+package dortal.insurance.controller;
 
-import com.insurance.security.JwtResponse;
-import com.insurance.security.JwtTokenProvider;
-import com.insurance.dto.LoginRequest;
-import com.insurance.entity.User;
-import com.insurance.service.UserService;
+import dortal.insurance.security.JwtResponse;
+import dortal.insurance.security.JwtTokenProvider;
+import dortal.insurance.dto.LoginRequest;
+import dortal.insurance.entity.User;
+import dortal.insurance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +41,7 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
         }
 
-        String jwt = jwtTokenProvider.renewTokenIfNeeded(user.getUsername());
+        String jwt = jwtTokenProvider.generateToken(user.getUsername());
         return ResponseEntity.ok(new JwtResponse(jwt));
     }
 

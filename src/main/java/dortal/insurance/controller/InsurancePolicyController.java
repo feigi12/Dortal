@@ -1,9 +1,9 @@
-package com.insurance.controller;
+package dortal.insurance.controller;
 
-import com.insurance.entity.InsurancePolicy;
-import com.insurance.entity.User;
-import com.insurance.repository.InsurancePolicyRepository;
-import com.insurance.service.UserService;
+import dortal.insurance.entity.InsurancePolicy;
+import dortal.insurance.entity.User;
+import dortal.insurance.repository.InsurancePolicyRepository;
+import dortal.insurance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,13 +29,26 @@ public class InsurancePolicyController {
             @AuthenticationPrincipal User userDetails,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
-            @RequestParam(defaultValue = "id,asc") String[] sort) {
+            @RequestParam(defaultValue = "id,asc") String[] sort,
+            @RequestParam(required = false) String policyType)
+    {
 
         Sort.Direction direction = sort[1].equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
         Sort sortBy = Sort.by(direction, sort[0]);
         Pageable pageable = PageRequest.of(page, size, sortBy);
-
-        return policyRepository.findByUserId(userDetails.getId(), pageable);
+        if (policyType != null) {
+            return policyRepository.findByUserIdAndPolicyType(
+                    userDetails.getId(),
+                    policyType,
+                    pageable
+            );
+        }
+        else{
+            return policyRepository.findByUserId(
+                    userDetails.getId(),
+                    pageable
+            );
+        }
     }
 
     @PostMapping

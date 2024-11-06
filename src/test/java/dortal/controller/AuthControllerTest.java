@@ -1,14 +1,14 @@
-package com.controller;
+package dortal.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.insurance.controller.AuthController;
-import com.insurance.dto.LoginRequest;
-import com.insurance.entity.User;
-import com.insurance.security.JwtResponse;
-import com.insurance.security.JwtTokenProvider;
-import com.insurance.service.UserService;
+import dortal.insurance.controller.AuthController;
+import dortal.insurance.dto.LoginRequest;
+import dortal.insurance.entity.User;
+import dortal.insurance.security.JwtResponse;
+import dortal.insurance.security.JwtTokenProvider;
+import dortal.insurance.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

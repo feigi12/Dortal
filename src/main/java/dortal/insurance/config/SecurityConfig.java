@@ -1,4 +1,4 @@
-package com.insurance.config;
+package dortal.insurance.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

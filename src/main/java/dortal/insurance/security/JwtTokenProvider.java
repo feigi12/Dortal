@@ -1,6 +1,6 @@
-package com.insurance.security;
+package dortal.insurance.security;
 
-import com.insurance.repository.UserRepository;
+import dortal.insurance.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -34,13 +34,6 @@ public class JwtTokenProvider {
                 .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
-    }
-    public String renewTokenIfNeeded(String token) {
-        Claims claims = getClaimsFromToken(token);
-        if (isTokenExpiringSoon(claims.getExpiration())) {
-            return generateToken(claims.getSubject());
-        }
-        return token;
     }
 
     private boolean isTokenExpiringSoon(Date expirationDate) {
