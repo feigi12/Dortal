@@ -1,7 +1,7 @@
-    package com.Dortal.insurance.config;
+    package com.insurance.config;
 
-    import com.Dortal.insurance.security.JwtTokenProvider;
-    import com.Dortal.insurance.service.UserService;
+    import com.insurance.security.JwtTokenProvider;
+    import com.insurance.service.UserService;
     import jakarta.servlet.FilterChain;
     import jakarta.servlet.ServletException;
     import jakarta.servlet.http.HttpServletRequest;

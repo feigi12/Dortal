@@ -1,4 +1,4 @@
-package com.Dortal.insurance.dto;
+package com.insurance.dto;
 
 import lombok.Getter;
 import lombok.Setter;

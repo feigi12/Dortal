@@ -1,10 +1,10 @@
-package com.Dortal.insurance.controller;
+package com.insurance.controller;
 
-import com.Dortal.insurance.security.JwtResponse;
-import com.Dortal.insurance.security.JwtTokenProvider;
-import com.Dortal.insurance.dto.LoginRequest;
-import com.Dortal.insurance.entity.User;
-import com.Dortal.insurance.service.UserService;
+import com.insurance.security.JwtResponse;
+import com.insurance.security.JwtTokenProvider;
+import com.insurance.dto.LoginRequest;
+import com.insurance.entity.User;
+import com.insurance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

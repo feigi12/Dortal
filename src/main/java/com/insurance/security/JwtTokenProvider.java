@@ -1,6 +1,6 @@
-package com.Dortal.insurance.security;
+package com.insurance.security;
 
-import com.Dortal.insurance.repository.UserRepository;
+import com.insurance.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

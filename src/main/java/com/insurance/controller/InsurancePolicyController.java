@@ -1,9 +1,9 @@
-package com.Dortal.insurance.controller;
+package com.insurance.controller;
 
-import com.Dortal.insurance.entity.InsurancePolicy;
-import com.Dortal.insurance.entity.User;
-import com.Dortal.insurance.repository.InsurancePolicyRepository;
-import com.Dortal.insurance.service.UserService;
+import com.insurance.entity.InsurancePolicy;
+import com.insurance.entity.User;
+import com.insurance.repository.InsurancePolicyRepository;
+import com.insurance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

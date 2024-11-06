@@ -1,4 +1,4 @@
-package com.Dortal.insurance.exception;
+package com.insurance.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

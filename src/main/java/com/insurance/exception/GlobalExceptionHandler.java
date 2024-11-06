@@ -1,4 +1,4 @@
-package com.Dortal.insurance.exception;
+package com.insurance.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

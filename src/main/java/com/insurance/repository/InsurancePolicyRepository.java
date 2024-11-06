@@ -1,6 +1,6 @@
-package com.Dortal.insurance.repository;
+package com.insurance.repository;
 
-import com.Dortal.insurance.entity.InsurancePolicy;
+import com.insurance.entity.InsurancePolicy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,7 +1,7 @@
-package com.Dortal.insurance.service;
+package com.insurance.service;
 
-import com.Dortal.insurance.repository.UserRepository;
-import com.Dortal.insurance.entity.User;
+import com.insurance.repository.UserRepository;
+import com.insurance.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
