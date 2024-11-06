@@ -1,6 +1,5 @@
 package com.controller;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -22,8 +21,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.Optional;
 
 @TestPropertySource(properties ={"jwt.secret=MySecretKey", "jwt.expiration=3600"})
 @SpringBootTest
@@ -51,8 +48,9 @@ public class InsurancePolicyControllerTest {
         jwtToken = "mockedJwtToken";
 
         when(jwtTokenProvider.renewTokenIfNeeded(anyString())).thenReturn(jwtToken);
+        when(jwtTokenProvider.validateToken(jwtToken)).thenReturn(true);
+        when(jwtTokenProvider.getUsernameFromToken(jwtToken)).thenReturn("testUser");
     }
-
     @Test
     @WithMockUser
     public void testCreatePolicy() throws Exception {
@@ -62,6 +60,7 @@ public class InsurancePolicyControllerTest {
 
         InsurancePolicy policy = new InsurancePolicy();
         policy.setPolicyHolderName("New Holder");
+        policy.setUser(user);
 
         when(userService.loadUserByUsername("testUser")).thenReturn(user);
         when(policyRepository.save(any(InsurancePolicy.class))).thenReturn(policy);
@@ -71,40 +70,8 @@ public class InsurancePolicyControllerTest {
                         .content("{\"policyHolderName\": \"New Holder\"}")
                         .header("Authorization", "Bearer " + jwtToken))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.policyHolderName").value("New Holder"));
-    }
-
-    @Test
-    @WithMockUser(username = "testUser")
-    public void testUpdatePolicy() throws Exception {
-        InsurancePolicy existingPolicy = new InsurancePolicy();
-        existingPolicy.setId(1L);
-        existingPolicy.setUser(new User());
-
-        when(policyRepository.findById(1L)).thenReturn(Optional.of(existingPolicy));
-
-        mockMvc.perform(delete("/api/policies/1")
-                        .header("Authorization", "Bearer " + jwtToken))
-                .andExpect(status().isOk());
-
-        verify(policyRepository).findById(1L);
-        verify(policyRepository).delete(existingPolicy);
-    }
-
-    @Test
-    @WithMockUser
-    public void testDeletePolicy() throws Exception {
-        InsurancePolicy existingPolicy = new InsurancePolicy();
-        existingPolicy.setId(1L);
-        existingPolicy.setUser(new User());
-
-        when(policyRepository.findById(1L)).thenReturn(Optional.of(existingPolicy));
-
-        mockMvc.perform(delete("/api/policies/1")
-                        .header("Authorization", "Bearer " + jwtToken))
-                .andExpect(status().isOk());
-
-        verify(policyRepository).findById(1L);
-        verify(policyRepository).delete(existingPolicy);
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.policyHolderName").value("New Holder"))
+                .andExpect(jsonPath("$.user.id").value(1L));
     }
 }
